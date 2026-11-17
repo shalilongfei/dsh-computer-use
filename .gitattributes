@@ -1,0 +1,17 @@
+* text=auto eol=lf
+
+*.ps1 text eol=crlf
+*.bat text eol=crlf
+*.cmd text eol=crlf
+*.cs  text eol=crlf
+*.csproj text eol=crlf
+
+# 预编译产物原样保留，不做换行转换
+helper/bin/** -text
+
+*.exe binary
+*.dll binary
+*.jpg binary
+*.png binary
+*.gif binary
+*.ico binary

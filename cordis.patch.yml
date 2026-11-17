@@ -1,0 +1,21 @@
+# Computer Use plugin — Cordis patch configuration
+# Referenced by package.json's dsh.bundle.patch
+
+- insert:
+    - id: computer-use
+      name: 'dsh-computer-use'
+      config:
+        maxScreenshotWidth: 1366
+        screenshotQuality: 70
+        # Keep the conversation small AND stay off the built-in DeepSeek
+        # provider's Files-API image path, which is beta-gated and fails without
+        # the right `anthropic-beta` header. 'file' returns only the saved path;
+        # use 'auto' on a route that handles images reliably (e.g. the pi-ai
+        # provider), which attaches the screenshot as an image instead.
+        autoScreenshot: false
+        screenshotMode: file # file | auto
+        waitAfterAction: 400
+        authorization: per-app # per-app | allow-all
+        forbiddenApps: []
+        showGlow: true
+        escPause: true

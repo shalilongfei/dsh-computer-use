@@ -1,0 +1,73 @@
+{
+  "name": "dsh-computer-use",
+  "version": "0.3.0",
+  "description": "Windows computer-use plugin for DeepSeek Harness: screenshot, mouse, keyboard, window control, UI Automation and clipboard",
+  "type": "module",
+  "main": "lib/index.js",
+  "exports": {
+    ".": "./lib/index.js",
+    "./client": "./lib/client.js",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "lib/index.js",
+    "lib/client.js",
+    "cordis.patch.yml",
+    "helper/bin/Release/net9.0-windows/Win32Bridge.exe",
+    "helper/bin/Release/net9.0-windows/Win32Bridge.dll",
+    "helper/bin/Release/net9.0-windows/Win32Bridge.deps.json",
+    "helper/bin/Release/net9.0-windows/Win32Bridge.runtimeconfig.json",
+    "helper/Program.cs",
+    "helper/Win32Bridge.csproj",
+    "start-broker.ps1",
+    "README.md",
+    "SECURITY.md",
+    "BROKER-README.md",
+    "LICENSE"
+  ],
+  "keywords": [
+    "deepseek-harness",
+    "dsh",
+    "dsh-plugin",
+    "computer-use",
+    "windows",
+    "automation",
+    "ui-automation",
+    "win32",
+    "screenshot",
+    "agent"
+  ],
+  "license": "MIT",
+  "engines": {
+    "node": ">=18"
+  },
+  "os": [
+    "win32"
+  ],
+  "scripts": {
+    "build:helper": "dotnet build helper/Win32Bridge.csproj -c Release",
+    "broker": "powershell -NoProfile -ExecutionPolicy Bypass -File start-broker.ps1",
+    "broker:stop": "powershell -NoProfile -ExecutionPolicy Bypass -File start-broker.ps1 -Stop",
+    "test": "node test/test-apply.mjs && node test/test-execute.mjs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shalilongfei/dsh-computer-use.git"
+  },
+  "bugs": {
+    "url": "https://github.com/shalilongfei/dsh-computer-use/issues"
+  },
+  "homepage": "https://github.com/shalilongfei/dsh-computer-use#readme",
+  "author": "shalilongfei",
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "inject": [
+        "@deepseek-ai/dsh-client-ui-sidebar-right"
+      ]
+    }
+  }
+}

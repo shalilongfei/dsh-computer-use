@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net9.0-windows</TargetFramework>
+    <UseWindowsForms>true</UseWindowsForms>
+    <UseWPF>true</UseWPF>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <AssemblyName>Win32Bridge</AssemblyName>
+    <RootNamespace>Win32Bridge</RootNamespace>
+
+    <!-- 发布用：不生成调试符号文件。PDB 会内嵌构建者的本机绝对路径
+         （源文件路径、NuGet 缓存路径），随仓库公开属于隐私泄露。 -->
+    <DebugType>none</DebugType>
+    <DebugSymbols>false</DebugSymbols>
+
+    <!-- 把构建路径归一化，避免同样的路径写进程序集元数据 -->
+    <Deterministic>true</Deterministic>
+    <PathMap>$(MSBuildProjectDirectory)=/dsh-computer-use/helper</PathMap>
+  </PropertyGroup>
+</Project>

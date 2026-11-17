@@ -1,0 +1,33 @@
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  check:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '9.0.x'
+
+      - name: JS syntax check
+        run: |
+          node --check lib/index.js
+          node --check lib/client.js
+
+      - name: Build helper from source
+        run: dotnet build helper/Win32Bridge.csproj -c Release
+
+      - name: Smoke test helper
+        run: |
+          '{"action":"list_windows"}' | .\helper\bin\Release\net9.0-windows\Win32Bridge.exe

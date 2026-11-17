@@ -1,0 +1,30 @@
+# 构建中间产物（helper/bin/Release 的预编译产物要保留，用户开箱可用）
+helper/obj/
+helper/bin/Debug/
+
+# 运行时生成
+broker.log
+broker.token
+*.token
+*.log
+
+# 依赖
+node_modules/
+pnpm-lock.yaml
+package-lock.json
+
+# 编辑器 / 系统
+.vs/
+.vscode/
+.idea/
+*.user
+Thumbs.db
+Desktop.ini
+*.swp
+*~
+
+# 临时截图（docs/ 下的示例图要保留）
+/*.jpg
+/*.png
+/*.gif
+/shot-*.jpg
