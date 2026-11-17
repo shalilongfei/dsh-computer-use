@@ -1,14 +1,10 @@
 // End-to-end: drive the registered tools through their real execute() path.
 //
-// 需要 DSH 安装目录（内含 node_modules/@deepseek-ai/dsh-tools）。默认从环境变量
-// DSH_ROOT 读取，未设置时用下面这个占位路径 —— 请改成你自己的 DSH 运行时目录。
-import { fileURLToPath, pathToFileURL } from 'node:url'
-import { dirname, join } from 'node:path'
+// 需要 DSH 运行时目录，自动探测；探测不到时看 test/_dsh-root.mjs 里的提示。
+import { pathToFileURL } from 'node:url'
+import { join } from 'node:path'
+import { DSH_ROOT, PLUGIN_ROOT } from './_dsh-root.mjs'
 
-const HERE = dirname(fileURLToPath(import.meta.url))
-const PLUGIN_ROOT = join(HERE, '..')
-
-const DSH_ROOT = process.env.DSH_ROOT ?? 'C:/path/to/dsh/runtime'
 const toolsUrl = pathToFileURL(join(DSH_ROOT, 'node_modules/@deepseek-ai/dsh-tools/lib/index.js')).href
 const pluginUrl = pathToFileURL(join(PLUGIN_ROOT, 'lib', 'index.js')).href
 

@@ -415,6 +415,19 @@ schtasks /Create /TN "DSHComputerUseBroker" /SC ONLOGON /RL HIGHEST /F `
 
 ## 测试
 
+测试脚本会自动探测 DSH 运行时目录（`<dsh>/profiles/node_modules/@deepseek-ai/dsh-tools`）。
+探测不到时用环境变量指定：
+
+```powershell
+# PowerShell
+$env:DSH_ROOT = "$env:USERPROFILE\.dsh\profiles"
+
+# bash / zsh
+export DSH_ROOT="$HOME/.dsh/profiles"
+```
+
+然后：
+
 ```powershell
 cd test
 
@@ -429,6 +442,32 @@ node demo.mjs              # 可见的桌面演示（会真的动你的鼠标）
 
 ```powershell
 npm test
+```
+
+实际输出长这样：
+
+```text
+$ node test/test-apply.mjs
+tools     : computer, computer_batch, windows, ui_elements, clipboard, app_skill
+prompt    : tool:computer
+routes    : /dsh-computer-use/state
+---
+---
+OK: 6 tools register cleanly with the real validator
+```
+
+```text
+$ node test/test-execute.mjs
+windows.list: - "微信" handle=134038 pid=18744 964x785 at (3614,380) | ...
+computer.cursor_position: cursor at (3921, 1240)
+clipboard.read: clipboard (0 chars):
+ui_elements: 2 of 2 controls in the foreground window | [0] window "Chrome" ...
+computer.screenshot: path=...\shot-1794893566877.jpg 1366x853 screen=1646x1029 image=no
+app_skill.list: App skills: - Chrome - FlClash - test
+computer.glow: {"shown":true,"text":"DSH 正在操控你的电脑"}
+computer.glow.hide: {"shown":false}
+---
+OK: every tool executed through its real execute() path
 ```
 
 ---
