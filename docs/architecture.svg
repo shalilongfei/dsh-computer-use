@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 420" width="980" height="420" role="img" aria-label="dsh-computer-use 架构图">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 480" width="980" height="480" role="img" aria-label="dsh-computer-use 架构图">
   <defs>
     <style>
       .bg      { fill:#0d1117; }
@@ -11,38 +11,38 @@
       .lbl     { fill:#58a6ff; font-family:'Segoe UI','PingFang SC','Microsoft YaHei',sans-serif; font-size:11px; font-weight:600; }
       .lbl-br  { fill:#a78bfa; font-family:'Segoe UI','PingFang SC','Microsoft YaHei',sans-serif; font-size:11px; font-weight:600; }
       .edge    { stroke:#3b82f6; stroke-width:1.8; fill:none; }
-      .edge-d  { stroke:#484f58; stroke-width:1.6; fill:none; stroke-dasharray:6 4; }
       .edge-br { stroke:#8b5cf6; stroke-width:1.8; fill:none; stroke-dasharray:6 4; }
       .arrow   { fill:#3b82f6; }
-      .arrow-d { fill:#484f58; }
       .arrow-br{ fill:#8b5cf6; }
     </style>
     <marker id="a" markerWidth="9" markerHeight="9" refX="8" refY="3.2" orient="auto">
       <path d="M0,0 L8,3.2 L0,6.4 z" class="arrow"/>
-    </marker>
-    <marker id="ad" markerWidth="9" markerHeight="9" refX="8" refY="3.2" orient="auto">
-      <path d="M0,0 L8,3.2 L0,6.4 z" class="arrow-d"/>
     </marker>
     <marker id="abr" markerWidth="9" markerHeight="9" refX="8" refY="3.2" orient="auto">
       <path d="M0,0 L8,3.2 L0,6.4 z" class="arrow-br"/>
     </marker>
   </defs>
 
-  <rect width="980" height="420" class="bg"/>
+  <rect width="980" height="480" class="bg"/>
+
+  <!-- header -->
+  <text x="30" y="52" class="t" font-size="20">dsh-computer-use · 三个组件，职责分明</text>
+  <text x="30" y="76" class="s">读取类动作（截图 / UIA / 窗口 / 剪贴板）始终走本地 helper，不需要 broker</text>
+  <line x1="30" y1="94" x2="950" y2="94" stroke="#21262d" stroke-width="1"/>
 
   <!-- DSH model -->
   <rect x="30" y="150" width="180" height="110" rx="10" class="box"/>
   <text x="120" y="188" text-anchor="middle" class="t">DSH 模型</text>
   <text x="120" y="210" text-anchor="middle" class="s">LLM · 决定看哪儿点哪儿</text>
-  <text x="120" y="234" text-anchor="middle" class="m">tools call</text>
+  <text x="120" y="236" text-anchor="middle" class="m">tools call</text>
 
   <!-- lib/index.js -->
   <rect x="290" y="140" width="200" height="130" rx="10" class="box-hi"/>
   <text x="390" y="176" text-anchor="middle" class="t">lib/index.js</text>
   <text x="390" y="198" text-anchor="middle" class="s">插件宿主半</text>
-  <text x="390" y="220" text-anchor="middle" class="m">坐标换算</text>
-  <text x="390" y="238" text-anchor="middle" class="m">注入通道调度</text>
-  <text x="390" y="256" text-anchor="middle" class="m">工具注册</text>
+  <text x="390" y="222" text-anchor="middle" class="m">坐标换算</text>
+  <text x="390" y="240" text-anchor="middle" class="m">注入通道调度</text>
+  <text x="390" y="258" text-anchor="middle" class="m">工具注册</text>
 
   <!-- Win32Bridge -->
   <rect x="570" y="120" width="200" height="170" rx="10" class="box-hi"/>
@@ -56,37 +56,38 @@
 
   <!-- Windows desktop -->
   <rect x="830" y="150" width="120" height="110" rx="10" class="box"/>
-  <text x="890" y="186" text-anchor="middle" class="t">Windows</text>
-  <text x="890" y="208" text-anchor="middle" class="s">桌面 / 应用</text>
-  <text x="890" y="232" text-anchor="middle" class="m">真实键鼠</text>
+  <text x="890" y="188" text-anchor="middle" class="t">Windows</text>
+  <text x="890" y="210" text-anchor="middle" class="s">桌面 / 应用</text>
+  <text x="890" y="236" text-anchor="middle" class="m">真实键鼠</text>
 
   <!-- broker -->
-  <rect x="570" y="330" width="200" height="66" rx="10" class="box-br"/>
-  <text x="670" y="357" text-anchor="middle" class="t">提权 broker</text>
-  <text x="670" y="378" text-anchor="middle" class="s">管理员常驻 · 仅被拦时启用</text>
+  <rect x="570" y="358" width="200" height="66" rx="10" class="box-br"/>
+  <text x="670" y="385" text-anchor="middle" class="t">提权 broker</text>
+  <text x="670" y="406" text-anchor="middle" class="s">管理员常驻 · 仅被拦时启用</text>
 
-  <!-- edges -->
+  <!-- edges: model → plugin -->
   <path d="M210,205 L282,205" class="edge" marker-end="url(#a)"/>
   <text x="246" y="196" text-anchor="middle" class="lbl">tools</text>
 
+  <!-- plugin → helper -->
   <path d="M490,180 L562,180" class="edge" marker-end="url(#a)"/>
-  <text x="526" y="171" text-anchor="middle" class="lbl">stdin/stdout</text>
-  <text x="526" y="199" text-anchor="middle" class="m">one-shot JSON</text>
+  <text x="526" y="170" text-anchor="middle" class="lbl">stdin/stdout</text>
+  <text x="526" y="200" text-anchor="middle" class="m">one-shot JSON</text>
 
+  <!-- helper → windows -->
   <path d="M770,205 L822,205" class="edge" marker-end="url(#a)"/>
   <text x="796" y="196" text-anchor="middle" class="lbl">API</text>
 
-  <path d="M420,270 L420,363 L562,363" class="edge-br" marker-end="url(#abr)"/>
-  <text x="470" y="352" text-anchor="middle" class="lbl-br">输入类动作被拦时转发</text>
-  <text x="470" y="318" text-anchor="middle" class="m">loopback TCP + 令牌</text>
+  <!-- plugin → broker (inputs blocked) -->
+  <path d="M390,270 L390,391 L562,391" class="edge-br" marker-end="url(#abr)"/>
+  <text x="410" y="360" class="lbl-br">输入类动作被拦时转发</text>
+  <text x="410" y="378" class="m">loopback TCP + 令牌</text>
 
-  <path d="M770,352 L890,352 L890,268" class="edge-br" marker-end="url(#abr)"/>
-  <text x="838" y="344" text-anchor="middle" class="lbl-br">注入</text>
+  <!-- broker → windows -->
+  <path d="M770,391 L905,391 L905,272" class="edge-br" marker-end="url(#abr)"/>
+  <text x="812" y="382" text-anchor="middle" class="lbl-br">注入</text>
 
-  <!-- legend -->
-  <text x="30" y="60" class="t" font-size="20">dsh-computer-use · 三个组件，职责分明</text>
-  <text x="30" y="86" class="s">读取类动作（截图 / UIA / 窗口 / 剪贴板）始终走本地 helper，不需要 broker</text>
-  <line x1="30" y1="104" x2="950" y2="104" stroke="#21262d" stroke-width="1"/>
-
-  <text x="30" y="396" class="m">lib/index.js 跟随 DSH 权限　·　Win32Bridge.exe 每次调用起一个进程，退出不留痕迹　·　broker 只监听 127.0.0.1 且强制令牌</text>
+  <!-- footer -->
+  <line x1="30" y1="440" x2="950" y2="440" stroke="#21262d" stroke-width="1"/>
+  <text x="30" y="462" class="m">lib/index.js 跟随 DSH 权限　·　Win32Bridge.exe 每次调用起一个进程，退出不留痕迹　·　broker 只监听 127.0.0.1 且强制令牌</text>
 </svg>

@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 640" width="1280" height="640" role="img" aria-label="dsh-computer-use">
+  <defs>
+    <style>
+      .bg   { fill:#0d1117; }
+      .glow { fill:#1f6feb; opacity:0.14; }
+      .glow2{ fill:#8b5cf6; opacity:0.12; }
+      .t    { fill:#e6edf3; font-family:'Segoe UI','PingFang SC','Microsoft YaHei',sans-serif; }
+      .sub  { fill:#8b949e; font-family:'Segoe UI','PingFang SC','Microsoft YaHei',sans-serif; }
+      .m    { fill:#6e7681; font-family:'Cascadia Code',Consolas,monospace; }
+      .pill { fill:#161b22; stroke:#30363d; stroke-width:1.4; }
+      .pillt{ fill:#8b949e; font-family:'Segoe UI','PingFang SC','Microsoft YaHei',sans-serif; font-size:15px; }
+      .win  { fill:#161b22; stroke:#3b82f6; stroke-width:2.2; }
+      .win-t{ fill:#58a6ff; font-family:'Cascadia Code',Consolas,monospace; font-size:15px; font-weight:700; }
+    </style>
+    <radialGradient id="g1" cx="20%" cy="10%" r="70%">
+      <stop offset="0%" stop-color="#1f6feb" stop-opacity="0.20"/>
+      <stop offset="100%" stop-color="#1f6feb" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="g2" cx="88%" cy="92%" r="60%">
+      <stop offset="0%" stop-color="#8b5cf6" stop-opacity="0.18"/>
+      <stop offset="100%" stop-color="#8b5cf6" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="1280" height="640" class="bg"/>
+  <rect width="1280" height="640" fill="url(#g1)"/>
+  <rect width="1280" height="640" fill="url(#g2)"/>
+
+  <!-- subtle grid -->
+  <g stroke="#161b22" stroke-width="1">
+    <path d="M0,80 H1280 M0,160 H1280 M0,240 H1280 M0,320 H1280 M0,400 H1280 M0,480 H1280 M0,560 H1280"/>
+    <path d="M80,0 V640 M160,0 V640 M240,0 V640 M320,0 V640 M400,0 V640 M480,0 V640 M560,0 V640 M640,0 V640 M720,0 V640 M800,0 V640 M880,0 V640 M960,0 V640 M1040,0 V640 M1120,0 V640 M1200,0 V640"/>
+  </g>
+  <rect width="1280" height="640" fill="#0d1117" opacity="0.82"/>
+
+  <!-- title block -->
+  <text x="80" y="176" class="t" font-size="62" font-weight="700">dsh-computer-use</text>
+  <text x="82" y="222" class="sub" font-size="23">让你的 DSH agent 真的会「用电脑」</text>
+
+  <!-- accent line -->
+  <rect x="80" y="248" width="96" height="4" rx="2" fill="#58a6ff"/>
+
+  <!-- capabilities pills -->
+  <g>
+    <rect x="80"  y="284" width="118" height="42" rx="21" class="pill"/><text x="139" y="311" text-anchor="middle" class="pillt">截图</text>
+    <rect x="210" y="284" width="118" height="42" rx="21" class="pill"/><text x="269" y="311" text-anchor="middle" class="pillt">鼠标</text>
+    <rect x="340" y="284" width="118" height="42" rx="21" class="pill"/><text x="399" y="311" text-anchor="middle" class="pillt">键盘</text>
+    <rect x="470" y="284" width="118" height="42" rx="21" class="pill"/><text x="529" y="311" text-anchor="middle" class="pillt">窗口</text>
+    <rect x="600" y="284" width="150" height="42" rx="21" class="pill"/><text x="675" y="311" text-anchor="middle" class="pillt">UI Automation</text>
+    <rect x="762" y="284" width="118" height="42" rx="21" class="pill"/><text x="821" y="311" text-anchor="middle" class="pillt">剪贴板</text>
+  </g>
+
+  <!-- window mock -->
+  <g>
+    <rect x="80" y="368" width="560" height="196" rx="12" class="win"/>
+    <rect x="80" y="368" width="560" height="38" rx="12" fill="#1f6feb" opacity="0.10"/>
+    <circle cx="104" cy="387" r="5.5" fill="#ff5f57"/>
+    <circle cx="124" cy="387" r="5.5" fill="#febc2e"/>
+    <circle cx="144" cy="387" r="5.5" fill="#28c840"/>
+    <text x="600" y="392" text-anchor="end" class="m" font-size="12">Win32Bridge.exe</text>
+
+    <text x="108" y="440" class="m" font-size="13" fill="#58a6ff">› computer { "type": "diagnose" }</text>
+    <text x="108" y="466" class="m" font-size="12">  canInjectInput : true</text>
+    <text x="108" y="486" class="m" font-size="12">  broker.online  : true</text>
+    <text x="108" y="506" class="m" font-size="12">  screen         : 1646 x 1029</text>
+    <text x="108" y="530" class="m" font-size="12" fill="#3fb950">  pointer verified after every injection ✓</text>
+  </g>
+
+  <!-- right stack -->
+  <g>
+    <rect x="700" y="368" width="500" height="86" rx="12" class="pill"/>
+    <text x="726" y="402" class="win-t">绝不假装成功</text>
+    <text x="726" y="428" class="sub" font-size="14">注入后回读真实光标，不到位就报错</text>
+
+    <rect x="700" y="466" width="500" height="86" rx="12" class="pill"/>
+    <text x="726" y="500" class="win-t">键盘不碰剪贴板</text>
+    <text x="726" y="526" class="sub" font-size="14">KEYEVENTF_UNICODE 直输，中文 emoji 都行</text>
+  </g>
+
+  <!-- footer -->
+  <text x="80" y="608" class="m" font-size="13">Windows 10 / 11　·　Node ≥18　·　MIT　·　DeepSeek Harness plugin</text>
+  <text x="1200" y="608" text-anchor="end" class="m" font-size="13">github.com/shalilongfei/dsh-computer-use</text>
+</svg>

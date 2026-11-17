@@ -17,6 +17,8 @@
 
 一个 [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness)（DSH）插件。装上之后，模型能看屏幕、点按钮、打字、切窗口——也就是常说的 *computer use*。
 
+<img src="docs/architecture.png" alt="架构图" width="100%">
+
 </div>
 
 ---
